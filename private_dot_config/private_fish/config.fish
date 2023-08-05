@@ -11,6 +11,7 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 export NEOVIDE_MULTIGRID=1
 
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
+set -x PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
 set -x PATH ~/.cargo/bin $PATH
 set -x PATH ~/flutter/bin $PATH
 set -x PATH ~/go/bin ~/neovim/bin/ $PATH 
