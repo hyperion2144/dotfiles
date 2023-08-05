@@ -9,6 +9,7 @@ export GOPATH="/Users/hyperion/go"
 export GOROOT="/usr/local/go"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 export NEOVIDE_MULTIGRID=1
+export NEOVIDE_FRAME="none"
 
 set -x PATH /opt/local/bin /opt/local/sbin $PATH
 set -x PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
