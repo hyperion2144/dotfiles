@@ -20,28 +20,29 @@ yabai -m config \
 	window_zoom_persist on \
 	window_topmost on \
 	window_shadow on \
-	window_animation_duration 0.0 \
+	window_animation_duration 0.3 \
 	window_animation_frame_rate 120 \
 	window_opacity_duration 0.0 \
 	active_window_opacity 1.0 \
 	normal_window_opacity 0.90 \
 	window_opacity off \
 	insert_feedback_color 0xffd75f5f \
-	active_window_border_color 0xff775759 \
-	normal_window_border_color 0xff555555 \
-	window_border_width 4 \
-	window_border_radius 12 \
+	active_window_border_color 0xffe1e3e4 \
+	normal_window_border_color 0xff494d64 \
+	insert_feedback_color 0xff9dd274 \
+	window_border_width 2 \
+	window_border_radius 11 \
 	window_border_blur off \
-	window_border_hidpi on \
-	window_border off \
+	window_border_hidpi off \
+	window_border on \
 	split_ratio 0.50 \
 	split_type auto \
-	auto_balance off \
-	top_padding 0 \
-	bottom_padding 0 \
-	left_padding 0 \
-	right_padding 0 \
-	window_gap 02 \
+	auto_balance on \
+	top_padding 10 \
+	bottom_padding 4 \
+	left_padding 4 \
+	right_padding 4 \
+	window_gap 05 \
 	layout bsp \
 	mouse_modifier fn \
 	mouse_action1 move \
@@ -49,3 +50,7 @@ yabai -m config \
 	mouse_drop_action swap
 
 echo "yabai configuration loaded.."
+# add 20 padding to the top and 0 padding to the bottom of every space located on the main display
+yabai -m config external_bar main:32:0
+# add 20 padding to the top and bottom of all spaces regardless of the display it belongs to
+yabai -m config external_bar all:32:0
