@@ -69,7 +69,7 @@ source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Center
-# source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/spotify.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
@@ -80,14 +80,11 @@ source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 # source "$ITEM_DIR/cpu.sh"
 
-sketchybar --add alias "ClashX Pro,Item-0" right
-sketchybar --set "ClashX Pro,Item-0" alias.color="0xffffffff"
-sketchybar --add alias TextInputMenuAgent right
-sketchybar --set TextInputMenuAgent alias.color="0xffffffff"
-sketchybar --add alias "OrbStack,Item-0" right
-sketchybar --set "OrbStack,Item-0" alias.color="0xffffffff"
-sketchybar --add alias LemonMonitor right
-sketchybar --set LemonMonitor alias.color="0xffffffff"
+sketchybar --add alias TextInputMenuAgent right \
+	--set TextInputMenuAgent alias.color="0xffffffff"
+sketchybar --add alias LemonMonitor right \
+	--set LemonMonitor alias.color="0xffffffff"
+
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
 
