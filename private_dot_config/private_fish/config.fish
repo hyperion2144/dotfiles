@@ -2,7 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-starship init fish | source
 
 export GODOT4_BIN="~/Applications/Godot.app/Contents/MacOS/Godot"
 export GOPATH="/Users/hyperion/go"
@@ -18,8 +17,7 @@ set -x PATH ~/flutter/bin $PATH
 set -x PATH ~/go/bin ~/neovim/bin/ $PATH 
 set -x PATH /Volumes/DATE/projects/qemu/build $PATH
 
-defaults write com.apple.Terminal "Default Window Settings" -string "Warp"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Warp"
+starship init fish | source
 
 # =============================================================================
 #
