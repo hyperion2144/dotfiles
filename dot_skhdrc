@@ -83,16 +83,15 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east 
 # 交换窗口位置
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+shift + alt - h : yabai -m window --swap west; yabai -m window --focus west
+shift + alt - j : yabai -m window --swap south; yabai -m window --focus south
+shift + alt - k : yabai -m window --swap north; yabai -m window --focus north
+shift + alt - l : yabai -m window --swap east; yabai -m window --focus east
 # 移动窗口位置
-shift + cmd - h : yabai -m window --warp west
-shift + cmd - j : yabai -m window --warp south
-# 因与IDEA shift + cmd + K push code 冲突，故注释了此快捷键
-# shift + cmd - k : yabai -m window --warp north
-shift + cmd - l : yabai -m window --warp east
+shift + cmd - h : yabai -m window --warp west; yabai -m window --focus west
+shift + cmd - j : yabai -m window --warp south; yabai -m window --focus south
+shift + cmd - k : yabai -m window --warp north; yabai -m window --focus north
+shift + cmd - l : yabai -m window --warp east; yabai -m window --focus east
 # 浮动窗口设置 参考了Magent默认设置。因为之前用习惯了。。。。
 # 恢复原始窗口大小
 ctrl + alt - 0 : yabai -m space --balance
@@ -140,11 +139,11 @@ ctrl + alt + cmd - up : yabai -m window --resize top:0:-50; yabai -m window --re
 ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window --resize left:50:0
 
 # 重启 Yabai
-cmd + alt - r : /usr/bin/env osascript <<< "display notification \"正在重启 Yabai\" with title \"Yabai\""; launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+cmd + alt - r : yabai --restart-service
 
 # ================================ 多桌面配置  ================================
 # 创建一个新桌面，并把当前活动的窗口发送到新桌面，并且自动跳转到新桌面 需要jq支持 brew install jq
-shift + cmd - n : yabai -m space --create && index="$(yabai -m query --spaces --display | jq '.| length')" && yabai -m window --space "${index}" && yabai -m space --focus "${index}"
+shift + cmd - n : yabai -m space --create; set index "$(yabai -m query --spaces --display | jq '.| length')"; yabai -m window --space "$index"; yabai -m space --focus "$index"
 
 # 切换回最近的一个桌面
 alt - x : yabai -m space --focus recent
