@@ -7,50 +7,50 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 #
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-# sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 #
+
+BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
 
 # global settings
 yabai -m config \
 	mouse_follows_focus on \
-	focus_follows_mouse on \
-	window_origin_display default \
+	focus_follows_mouse autoraise \
+	window_origin_display focused \
 	window_placement second_child \
 	window_zoom_persist on \
 	window_topmost on \
-	window_shadow on \
+	window_shadow float \
 	window_animation_duration 0.3 \
 	window_animation_frame_rate 120 \
-	window_opacity_duration 0.0 \
+	window_opacity_duration 0.15 \
 	active_window_opacity 1.0 \
 	normal_window_opacity 0.90 \
-	window_opacity off \
+	window_opacity on \
 	insert_feedback_color 0xffd75f5f \
 	active_window_border_color 0xff7793d1 \
 	normal_window_border_color 0xff5e6798 \
 	insert_feedback_color 0xff9dd274 \
 	window_border_width 2 \
-	window_border_radius 11 \
+	window_border_radius 12 \
 	window_border_blur off \
-	window_border_hidpi off \
+	window_border_hidpi on \
 	window_border on \
 	split_ratio 0.50 \
 	split_type auto \
-	auto_balance on \
-	top_padding 10 \
+	auto_balance off \
+	top_padding 15 \
 	bottom_padding 4 \
-	left_padding 4 \
-	right_padding 4 \
+	left_padding 10 \
+	right_padding 10 \
 	window_gap 05 \
 	layout bsp \
-	mouse_modifier fn \
+	mouse_modifier super \
 	mouse_action1 move \
 	mouse_action2 resize \
 	mouse_drop_action swap
 
 echo "yabai configuration loaded.."
-# add 20 padding to the top and 0 padding to the bottom of every space located on the main display
-yabai -m config external_bar main:32:0
 # add 20 padding to the top and bottom of all spaces regardless of the display it belongs to
-yabai -m config external_bar all:32:0
+yabai -m config external_bar all:"${BAR_HEIGHT}":0
