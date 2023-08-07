@@ -90,6 +90,11 @@ sketchybar --add alias TextInputMenuAgent right \
 sketchybar --add alias LemonMonitor right \
 	--set LemonMonitor alias.color="0xffffffff"
 
+# M O D A L  I N D I C A T O R
+sketchybar -m --add item modal left
+sketchybar -m --set modal icon=[N]
+sketchybar -m --set modal icon_color =0xFF83A1F1
+
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
 

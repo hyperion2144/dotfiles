@@ -185,3 +185,13 @@ cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d
 # cmd + shift - e : open -a Xquartz && /bin/bash -l -c "sh ~/.config/dmenu/editconfig.sh" # Edit conigs
 # cmd + shift - d : open -a Xquartz && /bin/bash -l -c "sh ~/.config/dmenu/todo.sh"       # Todo
 # cmd + shift - m : open -a Xquartz && /bin/bash -l -c "sh ~/.config/dmenu/wallpaper.sh"  # Wallpaper
+
+
+# M O D E S
+:: default : $HOME/.config/bin/helpers -n
+:: window @ : $HOME/.config/bin/helpers -w
+:: scripts @ : $HOME/.config/bin/helpers -s
+# Mode Shortcuts
+default, scripts < lcmd - escape ; window
+window, scripts < escape ; default
+default, window < lctrl - escape ; scripts
