@@ -133,10 +133,17 @@ alt - t : yabai -m window --toggle float;yabai -m window --grid 4:4:1:1:2:2
 alt - r         : yabai -m space --rotate 90
 
 # 调整窗口大小
-ctrl + alt + cmd - left : yabai -m window --resize left:-50:0; yabai -m window --resize right:-50:0
-ctrl + alt + cmd - down : yabai -m window --resize bottom:0:50; yabai -m window --resize top:0:50
-ctrl + alt + cmd - up : yabai -m window --resize top:0:-50; yabai -m window --resize bottom:0:-50
-ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window --resize left:50:0
+## 增大窗口
+ctrl + alt + cmd - left : yabai -m window --resize left:-50:0; 
+ctrl + alt + cmd - down : yabai -m window --resize bottom:0:50;
+ctrl + alt + cmd - up : yabai -m window --resize top:0:-50;
+ctrl + alt + cmd - right : yabai -m window --resize right:50:0;
+## 缩小窗口
+alt + cmd - left : yabai -m window --resize left:50:0; 
+alt + cmd - down : yabai -m window --resize bottom:0:-50;
+alt + cmd - up : yabai -m window --resize top:0:50;
+alt + cmd - right : yabai -m window --resize right:-50:0;
+
 
 # 重启 Yabai
 cmd + alt - r : yabai --restart-service
