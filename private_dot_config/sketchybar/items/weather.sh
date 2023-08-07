@@ -9,6 +9,7 @@ weather_icon=(
 	background.padding_right=-15
 	icon.padding_left=5
 	icon.padding_right=5
+	icon.font="$NERD_FONT:Bold:16.0	"
 )
 
 weather_temp=(
@@ -30,7 +31,7 @@ weather_details=(
 	background.corner_radius=12
 	padding_left=7
 	padding_right=7
-	icon.font="FiraCode NF:Bold:14.0"
+	icon.font="$NERD_FONT:Bold:14.0"
 	icon.background.height=2
 	icon.background.y_offset=-12
 )

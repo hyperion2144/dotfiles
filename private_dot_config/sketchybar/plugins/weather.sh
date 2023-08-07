@@ -122,7 +122,7 @@ render_popup() {
 
 update() {
 	# Bar
-	url=$(jq -r '.weathergov | "\(.url)\(.location)/\(.format)"' ~/weather_config.json)
+	url=$(jq -r '.wttr | "\(.url)\(.location)/\(.format)"' ~/weather_config.json)
 	weather=$(curl -s "$url")
 	temp=$(echo "$weather" | jq -r '.properties.periods[0].temperature')
 	forecast=$(echo "$weather" | jq -r '.properties.periods[0].shortForecast')
