@@ -79,7 +79,7 @@ class Clipboard:
 
 
 if __name__ == "__main__":
-    clipboard = Clipboard("/Users/jordanp/.config/.clipboard_storage.json")
+    clipboard = Clipboard("/Users/hyperion/.config/.clipboard_storage.json")
     if clipboardHasChanged := clipboard.add_to_clipboard():
         clipboard.write_to_clipboard()
         clipboard.draw_clipboard()

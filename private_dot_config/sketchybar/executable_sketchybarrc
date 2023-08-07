@@ -81,10 +81,16 @@ source "$ITEM_DIR/weather.sh"
 source "$ITEM_DIR/brew.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/github.sh"
+sketchybar -m --add item reminders right \
+	--set reminders drawing=off \
+	--set reminders update_freq=20 \
+	--set reminders script="~/.config/sketchybar/plugins/reminders.sh" \
+	--set reminders click_script="~/.config/sketchybar/plugins/reminders_click.sh"
+
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/volume.sh"
-# source "$ITEM_DIR/clipboard.sh"
-# source "$ITEM_DIR/mic.sh"
+source "$ITEM_DIR/clipboard.sh"
 # source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/media.sh"
 
@@ -92,6 +98,15 @@ sketchybar --add alias TextInputMenuAgent right \
 	--set TextInputMenuAgent alias.color="0xffffffff"
 sketchybar --add alias LemonMonitor right \
 	--set LemonMonitor alias.color="0xffffffff"
+
+# S T A C K  I N D I C A T O R
+sketchybar -m --add item stack_sep center \
+	--add item stack center \
+	--set stack script="$HOME/.config/sketchybar/plugins/stack.sh" \
+	--subscribe stack window_focus front_app_switched space_change title_change \
+	--set stack_sep drawing=off \
+	--set stack drawing=off \
+	--set stack update_freq=0
 
 # M O D A L  I N D I C A T O R
 sketchybar -m --add item modal left
