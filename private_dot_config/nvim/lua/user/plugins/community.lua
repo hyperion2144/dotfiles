@@ -56,6 +56,8 @@ return {
 
   { import = "astrocommunity.programming-language-support.nvim-jqx" },
 
+  { import = "astrocommunity.project.project-nvim" },
+
   { import = "astrocommunity.search.sad-nvim" },
 
   { import = "astrocommunity.lsp.inc-rename-nvim" },
