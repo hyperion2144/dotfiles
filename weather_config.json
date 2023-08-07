@@ -5,8 +5,8 @@
     "format": "forecast"
   },
   "wttr": {
-    "url": "https://wttr.in/",
-    "location": "Guangzhou+BaiYun",
-    "format": "format=2"
+    "url": "https://wttr.in",
+    "location": "",
+    "format": "format=j1"
   }
 }
