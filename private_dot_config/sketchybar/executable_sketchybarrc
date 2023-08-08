@@ -98,8 +98,12 @@ source "$ITEM_DIR/media.sh"
 
 sketchybar --add alias TextInputMenuAgent right \
 	--set TextInputMenuAgent alias.color="0xffffffff"
+sketchybar --add alias OrbStack right \
+	--set OrbStack alias.color="0xffffffff" \
+	--set OrbStack click_script="open -a OrbStack"
 sketchybar --add alias LemonMonitor right \
-	--set LemonMonitor alias.color="0xffffffff"
+	--set LemonMonitor alias.color="0xffffffff" \
+	--set LemonMonitor click_script="open -a 'Tencent Lemon'"
 
 # S T A C K  I N D I C A T O R
 sketchybar -m --add item stack_sep center \
