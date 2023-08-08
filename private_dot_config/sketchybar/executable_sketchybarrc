@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export LANG=zh_CN.UTF-8
+LANG=zh_CN.UTF-8
 
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh"  # Loads all defined icons
