@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sketchybar --set $NAME icon="$(date '+%a %d. %b')" label="$(date '+%H:%M')"
+LANG=zh_CN.UTF-8
+sketchybar --set $NAME icon="$(date '+%A %b月%d日 ')" label="$(date '+%H:%M')"
