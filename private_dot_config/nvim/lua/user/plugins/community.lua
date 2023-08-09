@@ -1,3 +1,5 @@
+local utils = require "astronvim.utils"
+
 return {
   -- add the community repository of plugin specifications
   "astronvim/astrocommunity",
@@ -22,7 +24,18 @@ return {
 
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.go" },
-  { "go.nvim", opts = { lsp_inlay_hints = { enable = false } } },
+  {
+    "go.nvim",
+    config = function()
+      require("go").setup {
+        lsp_inlay_hints = { enable = false },
+      }
+    end,
+  },
+  {
+    "leoluz/nvim-dap-go",
+    enabled = true,
+  },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.dart" },
   {
