@@ -12,7 +12,7 @@ if [ "$CPU_TEMP" -eq "0" ]; then
 	sketchybar -m --set sensor.cpu drawing=off \
 		--set sensor.gpu drawing=off
 else
-	sketchybar -m --set sensor.cpu drwaing=on label="${CPU_TEMP}" icon.highlight=$(if [ "$CPU_TEMP" -gt "70" ]; then echo "on"; else echo "off"; fi) \
-		--set sensor.gpu drwaing=on label="$GPU_TEMP" icon.highlight=$(if [ "$GPU_TEMP" -gt "70" ]; then echo "on"; else echo "off"; fi)
+	sketchybar -m --set sensor.cpu drawing=on label="${CPU_TEMP}" icon.highlight=$(if [ "$CPU_TEMP" -gt "70" ]; then echo "on"; else echo "off"; fi) \
+		--set sensor.gpu drawing=on label="$GPU_TEMP" icon.highlight=$(if [ "$GPU_TEMP" -gt "70" ]; then echo "on"; else echo "off"; fi)
 
 fi
