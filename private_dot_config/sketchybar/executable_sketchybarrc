@@ -73,6 +73,7 @@ source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
+source "$ITEM_DIR/cava.sh"
 
 # Center
 # source "$ITEM_DIR/spotify.sh"
@@ -82,6 +83,7 @@ source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/weather.sh"
 source "$ITEM_DIR/brew.sh"
 source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/bluetooth.sh"
 source "$ITEM_DIR/github.sh"
 sketchybar -m --add item reminders right \
 	--set reminders drawing=off \
@@ -92,18 +94,22 @@ sketchybar -m --add item reminders right \
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/stats.sh"
 source "$ITEM_DIR/clipboard.sh"
 # source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/media.sh"
 
+alias_properties=(
+	alias.color="0xffffffff"
+	background.padding_left=-10
+	background.padding_right=-10
+)
+
 sketchybar --add alias TextInputMenuAgent right \
-	--set TextInputMenuAgent alias.color="0xffffffff"
+	--set TextInputMenuAgent "${alias_properties[@]}"
 sketchybar --add alias OrbStack right \
-	--set OrbStack alias.color="0xffffffff" \
+	--set OrbStack "${alias_properties[@]}" \
 	--set OrbStack click_script="open -a OrbStack"
-sketchybar --add alias LemonMonitor right \
-	--set LemonMonitor alias.color="0xffffffff" \
-	--set LemonMonitor click_script="open -a 'Tencent Lemon'"
 
 # S T A C K  I N D I C A T O R
 sketchybar -m --add item stack_sep center \

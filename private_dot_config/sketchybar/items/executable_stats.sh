@@ -21,7 +21,7 @@ memory=(label.font="$FONT:Heavy:12"
 	icon.font="$FONT:Bold:16.0"
 	icon.color="$GREEN"
 	update_freq=15
-	script="$PLUGIN_DIR/stats/scripts/ram.sh"
+	script="$PLUGIN_DIR/ram.sh"
 )
 
 sketchybar --add item memory right \
@@ -33,11 +33,40 @@ disk=(
 	icon="$DISK"
 	icon.color="$MAROON"
 	update_freq=60
-	script="$PLUGIN_DIR/stats/scripts/disk.sh"
+	script="$PLUGIN_DIR/disk.sh"
 )
 
 sketchybar --add item disk right \
 	--set disk "${disk[@]}"
+
+sensor_cpu=(
+	y_offset=-7
+	label.font="$FONT:Heavy:10"
+	label.color="$TEXT"
+	icon="cpu"
+	icon.font="$NERD_FONT:Bold:10.0"
+	icon.color="$GREEN"
+	icon.highlight_color="$RED"
+	update_freq=1
+)
+
+sensor_gpu=(
+	background.padding_right=-45
+	y_offset=7
+	label.font="$FONT:Heavy:10"
+	label.color="$TEXT"
+	icon="gpu"
+	icon.font="$NERD_FONT:Bold:10.0"
+	icon.color="$GREEN"
+	icon.highlight_color="$RED"
+	update_freq=1
+	script="$PLUGIN_DIR/sensor.sh"
+)
+
+sketchybar --add item sensor.cpu right \
+	--set sensor.cpu "${sensor_cpu[@]}" \
+	--add item sensor.gpu right \
+	--set sensor.gpu "${sensor_gpu[@]}"
 
 network_down=(
 	y_offset=-7
@@ -51,7 +80,7 @@ network_down=(
 )
 
 network_up=(
-	background.padding_right=-70
+	background.padding_right=-62
 	y_offset=7
 	label.font="$FONT:Heavy:10"
 	label.color="$TEXT"
@@ -60,7 +89,7 @@ network_up=(
 	icon.color="$GREEN"
 	icon.highlight_color="$BLUE"
 	update_freq=1
-	script="$PLUGIN_DIR/stats/scripts/network.sh"
+	script="$PLUGIN_DIR/network.sh"
 )
 
 sketchybar --add item network.down right \
@@ -88,5 +117,5 @@ sketchybar --add event hide_stats \
 	--add item animator right \
 	--set animator drawing=off \
 	updates=on \
-	script="$HOME/.config/sketchybar/plugins/toggle_stats.sh" \
+	script="$PLUGIN_DIR/toggle_stats.sh" \
 	--subscribe animator hide_stats show_stats toggle_stats

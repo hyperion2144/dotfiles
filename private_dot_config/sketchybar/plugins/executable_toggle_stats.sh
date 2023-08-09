@@ -4,7 +4,10 @@ stats=(
 	cpu.percent
 	memory
 	disk
-	network
+	network.up
+	network.down
+	sensor.cpu
+	sensor.gpu
 )
 
 hide_stats() {
