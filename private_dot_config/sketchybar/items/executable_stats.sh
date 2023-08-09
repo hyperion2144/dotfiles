@@ -40,6 +40,7 @@ sketchybar --add item disk right \
 	--set disk "${disk[@]}"
 
 sensor_cpu=(
+	drawing=off
 	y_offset=-7
 	label.font="$FONT:Heavy:10"
 	label.color="$TEXT"
@@ -51,6 +52,7 @@ sensor_cpu=(
 )
 
 sensor_gpu=(
+	drawing=off
 	background.padding_right=-45
 	y_offset=7
 	label.font="$FONT:Heavy:10"
