@@ -82,7 +82,7 @@ network_down=(
 )
 
 network_up=(
-	background.padding_right=-62
+	background.padding_right=-62.5
 	y_offset=7
 	label.font="$FONT:Heavy:10"
 	label.color="$TEXT"

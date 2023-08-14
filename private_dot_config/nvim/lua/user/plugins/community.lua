@@ -1,5 +1,3 @@
-local utils = require "astronvim.utils"
-
 return {
   -- add the community repository of plugin specifications
   "astronvim/astrocommunity",
@@ -32,10 +30,6 @@ return {
       }
     end,
   },
-  {
-    "leoluz/nvim-dap-go",
-    enabled = true,
-  },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.dart" },
   {
@@ -45,7 +39,13 @@ return {
 
       return {
         lsp = require("astronvim.utils.lsp").config "dartls",
-        debugger = { enabled = true },
+        debugger = {
+          enabled = true,
+          register_configurations = function(_)
+            -- require("dap").configurations.dart = {}
+            require("dap.ext.vscode").load_launchjs()
+          end,
+        },
       }
     end,
   },
@@ -72,6 +72,11 @@ return {
   { import = "astrocommunity.project.project-nvim" },
 
   { import = "astrocommunity.search.sad-nvim" },
+  { "sad.nvim", config = function()
+    require("sad").setup {
+      vsplit = true,
+    }
+  end },
 
   { import = "astrocommunity.lsp.inc-rename-nvim" },
 
@@ -141,5 +146,5 @@ return {
     },
   },
 
-  { import = "astrocommunity.workflow.bad-practices-nvim" },
+  -- { import = "astrocommunity.workflow.bad-practices-nvim" },
 }

@@ -54,3 +54,4 @@ yabai -m config \
 echo "yabai configuration loaded.."
 # add 20 padding to the top and bottom of all spaces regardless of the display it belongs to
 yabai -m config external_bar all:"${BAR_HEIGHT}":0
+yabai -m rule --add app="IntelliJ IDEA" opacity=0.9

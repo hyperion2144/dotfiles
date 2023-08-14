@@ -7,7 +7,7 @@ function M.init()
 end
 
 function M.config()
-  vim.o.guifont = "FiraCode NF:h18"
+  vim.o.guifont = "FiraCode NF:h19"
   -- 没有空闲
   vim.g.neovide_no_idle = true
   -- 退出需要确认
@@ -32,15 +32,15 @@ function M.background()
   -- 设置透明背景
   local alpha = function() return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8)) end
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_window_floating_opacity = 0.0
+  vim.g.neovide_window_floating_opacity = 2.0
   vim.g.neovide_floating_transparency = 0.0
   vim.g.neovide_transparency = 0.0
   vim.g.transparency = 0.9
   vim.g.neovide_background_color = "#282a36" .. alpha()
   -- 浮动模糊量
-  vim.g.neovide_floating_blur = 0.0
-  vim.g.neovide_floating_blur_amount_x = 0.0
-  vim.g.neovide_floating_blur_amount_y = 0.0
+  vim.g.neovide_floating_blur = 2.0
+  vim.g.neovide_floating_blur_amount_x = 2.0
+  vim.g.neovide_floating_blur_amount_y = 2.0
 end
 
 -- 设置fps
