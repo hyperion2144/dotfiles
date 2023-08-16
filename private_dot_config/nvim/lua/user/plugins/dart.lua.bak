@@ -1,0 +1,18 @@
+return {
+  {
+    ft = "dart",
+    "dart-lang/dart-vim-plugin",
+  },
+  {
+    ft = "dart",
+    "thosakwe/vim-flutter",
+  },
+  {
+    ft = "dart",
+    "natebosch/vim-lsc",
+  },
+  {
+    ft = "dart",
+    "natebosch/vim-lsc-dart",
+  },
+}

@@ -47,6 +47,10 @@ return {
             require("dap.ext.vscode").load_launchjs()
           end,
         },
+        fvm = true,
+        dev_tools = {
+          autostart = true,
+        },
       }
     end,
   },
