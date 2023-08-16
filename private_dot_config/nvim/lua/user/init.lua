@@ -1,4 +1,3 @@
-local dartls = require "user.lsp.config.dartls"
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -59,6 +58,16 @@ return {
     },
   },
 
+  dap = {
+    adapters = {
+      dart = {
+        options = {
+          detached = false,
+        },
+      },
+    },
+  },
+
   -- Configure require("lazy").setup() options
   lazy = {
     defaults = { lazy = true },
@@ -94,24 +103,6 @@ return {
     --   },
     -- }
     require "user.autocmds"
-    -- require("lspconfig").dartls.setup({
-    --         cmd = { "dart", "language-server", "--protocol=lsp" },
-    --         filetypes = { "dart" },
-    --         init_options = {
-    --             closingLabels = true,
-    --             flutterOutline = true,
-    --             onlyAnalyzeProjectsWithOpenFiles = true,
-    --             outline = true,
-    --             suggestFromUnimportedLibraries = true,
-    --         },
-    --         -- root_dir = root_pattern("pubspec.yaml"),
-    --         settings = {
-    --             dart = {
-    --                 completeFunctionCalls = true,
-    --                 showTodos = true,
-    --             },
-    --         },
-    --     })
   end,
   -- add new user interface icon
   icons = {
