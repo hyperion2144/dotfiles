@@ -15,8 +15,8 @@ BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
 
 # global settings
 yabai -m config \
-	mouse_follows_focus on \
-	focus_follows_mouse autoraise \
+	mouse_follows_focus true \
+	focus_follows_mouse false \
 	window_origin_display focused \
 	window_placement second_child \
 	window_zoom_persist on \

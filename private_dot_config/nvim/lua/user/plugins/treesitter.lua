@@ -6,10 +6,6 @@ return {
       -- "lua"
     })
     return {
-      hilight = {
-        enable = true,
-        disable = {"dart"},
-      },
       indent = {
         enable = true,
 
