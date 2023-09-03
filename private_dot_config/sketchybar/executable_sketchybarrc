@@ -95,8 +95,8 @@ source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/stats.sh"
-source "$ITEM_DIR/clipboard.sh"
 # source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/clipboard.sh"
 source "$ITEM_DIR/media.sh"
 
 alias_properties=(
