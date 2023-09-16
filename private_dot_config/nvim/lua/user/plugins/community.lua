@@ -130,7 +130,7 @@ return {
   { import = "astrocommunity.utility.neodim" },
   { import = "astrocommunity.utility.nvim-toggler" },
   { import = "astrocommunity.utility.telescope-live-grep-args-nvim" },
-  { import = "astrocommunity.utility.transparent-nvim" },
+  -- { import = "astrocommunity.utility.transparent-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   {
     "folke/noice.nvim",
