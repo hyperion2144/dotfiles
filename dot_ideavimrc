@@ -1,0 +1,166 @@
+" ================================================================================================
+" = Extensions =====================================
+" ================================================================================================
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+map mc <A-n>
+map mx <A-x>
+map mv <A-p>
+
+" ================================================================================================
+" = Basic settings =====================================
+" ================================================================================================
+set clipboard+=unnamed
+set ignorecase
+set scrolloff=30
+set history=200
+
+set number
+" set relativenumber
+
+set incsearch
+set hlsearch
+set keep-english-in-normal
+
+" ================================================================================================
+" = No Leader Keymaps =====================================
+" ================================================================================================
+nmap ge <action>(GotoNextError)
+nmap gt <action>(GotoTest)
+nmap gm <action>(MethodUp)
+" last changed in current buffer(file)
+nmap ga <action>(GotoImplementation)
+
+" bookmark
+nmap ma <action>(ToggleBookmark)
+
+nmap L <action>(NextTab)
+nmap H <action>(PreviousTab)
+
+
+" ================================================================================================
+" = Leader Keymaps =====================================
+" ================================================================================================
+" leaderkey
+let mapleader=" "
+
+" ================================================================================================
+" 👻👻👻 Which-Key 👻👻👻
+" ================================================================================================
+set which-key
+set notimeout
+
+" f: Find/Format ⭐️
+let g:WhichKeyDesc_Find = "<leader>f Find"
+let g:WhichKeyDesc_Find_FindFile = "<leader>ff FindFile"
+nmap <leader>ff <action>(GotoFile)
+
+let g:WhichKeyDesc_Find_FindFileLocation = "<leader>fl FindFileLocation"
+nmap <leader>fl <action>(SelectInProjectView)
+
+let g:WhichKeyDesc_Find_FindText = "<leader>ft FindText"
+nmap <leader>ft <action>(FindInPath)
+
+let g:WhichKeyDesc_Find_Commands = "<leader>fc Commands"
+nmap <leader>fc <action>(GotoAction)
+
+let g:WhichKeyDesc_Find_OpenedProject = "<leader>fp OpenedProject"
+nmap <leader>fp <action>(OpenProjectWindows)
+
+" g: Git ⭐️
+let g:WhichKeyDesc_Git = "<leader>g Git"
+let g:WhichKeyDesc_Git_RollbackHunk = "<leader>gr RollbackHunk"
+nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+" i: Insert ⭐️
+let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
+nmap <leader>i f(a
+
+" w: save ⭐️
+let g:WhichKeyDesc_Save = "<leader>w Save"
+nmap <leader>w <action>(SaveAll)
+
+" j: add Semicolon and goto nextline⭐️
+let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
+nmap <leader>j A;<ESC>o
+
+" l: lsp: Language server protocol (align with neovim)⭐️
+let g:WhichKeyDesc_LSP = "<leader>l LSP"
+let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
+nmap <leader>lr <action>(RenameElement)
+
+let g:WhichKeyDesc_LSP_Format = "<leader>lf Format"
+nmap <leader>lf <action>(ReformatCode) \| <action>(OptimizeImports)
+
+let g:WhichKeyDesc_LSP_Actions = "<leader>la Actions"
+nmap <leader>la <action>(ShowIntentionActions)
+
+let g:WhichKeyDesc_LSP_Reflector = "<leader>lc Reflector"
+nmap <leader>lc <action>(RefactoringMenu)
+
+" d: Debug ⭐️
+let g:WhichKeyDesc_Debug = "<leader>d Debug"
+let g:WhichKeyDesc_Debug_Start = "<leader>dd Start"
+nmap <leader>ds <action>(Debug)
+let g:WhichKeyDesc_Debug_StepOver = "<leader>ds StepOver"
+nmap <leader>ds <action>(StepOver)
+let g:WhichKeyDesc_Debug_StepIn = "<leader>di StepIn"
+nmap <leader>di <action>(StepIn)
+let g:WhichKeyDesc_Debug_StepOut = "<leader>do StepOut"
+nmap <leader>do <action>(StepOut)
+let g:WhichKeyDesc_Debug_Continue = "<leader>dc Continue"
+nmap <leader>dc <action>(Continue)
+let g:WhichKeyDesc_Debug_Stop = "<leader>dd Stop"
+nmap <leader>dd <action>(Stop)
+let g:WhichKeyDesc_Debug_Reload = "<leader>dr Reload"
+nmap <leader>dr <action>(Reload)
+let g:WhichKeyDesc_Debug_ToggleBreakpoint = "<leader>db ToggleBreakpoint"
+nmap <leader>db <action>(ToggleLineBreakpoint)
+
+" n: No ⭐️
+let g:WhichKeyDesc_No_Highlight = "<leader>nl NoHighlight"
+nmap <leader>nl :nohlsearch<CR>
+
+
+" s: Show ⭐️
+let g:WhichKeyDesc_Show = "<leader>s Show"
+let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
+nmap <leader>ss <action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
+nmap <leader>sb <action>(ShowBookmarks)
+let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sb ShowParameterInfo"
+nmap <leader>sp <action>(ParameterInfo)
+
+" r: Run/Re ⭐️
+let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
+let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
+nmap <leader>rr <action>(Rerun)
+let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt ReRunTests"
+nmap <leader>rt <action>(RerunTests)
+let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
+map <leader>rn <action>(RenameElement)
+
+" z: zip(fold) ⭐️
+let g:WhichKeyDesc_Zip = "<leader>z Zip"
+let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo unZipAll"
+nmap <leader>zo <action>(ExpandAllRegions)
+let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc ZipAll"
+nmap <leader>zc <action>(CollapseAllRegions)
+
+" c: Close ⭐️;
+let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
+nmap <leader>c :q!<CR>
+
+" e: Toggle Explorer ⭐️
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
+nmap <leader>e <action>(ActivateProjectToolWindow)
+" e: Extract
+" extract method/function
+vmap <leader>em <action>(ExtractMethod)
+" extract constant
+vmap <leader>ec <action>(IntroduceConstant)
+" extract field
+vmap <leader>ef <action>(IntroduceField)
+" extract variable
+vmap <leader>ev <action>(IntroduceVariable)
