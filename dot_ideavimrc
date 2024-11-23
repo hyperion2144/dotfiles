@@ -1,166 +1,266 @@
-" ================================================================================================
-" = Extensions =====================================
-" ================================================================================================
-Plug 'tpope/vim-surround'
+" =======================================================
+" ========== Extensions ==========
+" =======================================================
 Plug 'preservim/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
-map mc <A-n>
-map mx <A-x>
-map mv <A-p>
 
-" ================================================================================================
-" = Basic settings =====================================
-" ================================================================================================
+
+" =======================================================
+" ========== Basic settings ======
+" =======================================================
+set scrolloff=10
+" setting the leader key
+let mapleader = " "
+" setting the clipboard to use the system clipboard
+set clipboard+=unnamedplus
 set clipboard+=unnamed
-set ignorecase
-set scrolloff=30
-set history=200
-
-set number
-" set relativenumber
-
-set incsearch
-set hlsearch
-set keep-english-in-normal
-
-" ================================================================================================
-" = No Leader Keymaps =====================================
-" ================================================================================================
-nmap ge <action>(GotoNextError)
-nmap gt <action>(GotoTest)
-nmap gm <action>(MethodUp)
-" last changed in current buffer(file)
-nmap ga <action>(GotoImplementation)
-
-" bookmark
-nmap ma <action>(ToggleBookmark)
-
-nmap L <action>(NextTab)
-nmap H <action>(PreviousTab)
-
-
-" ================================================================================================
-" = Leader Keymaps =====================================
-" ================================================================================================
-" leaderkey
-let mapleader=" "
-
-" ================================================================================================
-" 👻👻👻 Which-Key 👻👻👻
-" ================================================================================================
+set clipboard+=ideaput
+" plugins setting
+set easymotion
+set surround
+set multiple-cursors
 set which-key
 set notimeout
+" show line number
+set number
+" show relative line number
+set relativenumber
+" search highlight
+set hlsearch
+" ignore case when searching
+set ignorecase
+" ignore case when searching with capital letter
+set smartcase
+" position char in search
+set incsearch
+" show current mode
+set showmode
+" <S-h> <S-l> to move between buffers
+nnoremap <S-h> :bp<CR>
+nnoremap <S-l> :bn<CR>
+" <C-h> <C-j> <C-k> <C-l> to move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" <C-s> to save
+nnoremap <C-s> :w<CR>
+" gcc to comment out a line
+nmap gcc :CommentByLineComment<CR>
+vmap gc :CommentByLineComment<CR>
 
-" f: Find/Format ⭐️
-let g:WhichKeyDesc_Find = "<leader>f Find"
-let g:WhichKeyDesc_Find_FindFile = "<leader>ff FindFile"
-nmap <leader>ff <action>(GotoFile)
+" =======================================================
+" ========== Which Key ==========
+" =======================================================
+" show the keymap
+let g:WhichKeyDesc_LeaderKeymap="<leader>LeaderKeymap"
 
-let g:WhichKeyDesc_Find_FindFileLocation = "<leader>fl FindFileLocation"
-nmap <leader>fl <action>(SelectInProjectView)
+" ===================AI==========================
+" Setting AI keymap
+let g:WhichKeyDesc_AI="<leader>a AI"
+" toggle CopilotChat
+let g:WhichKeyDesc_AI_ToggleCopilotChat="<leader>aa Toggle CopilotChat"
+nnoremap <leader>aa :action copilot.chat.show<CR>
+" chat quickly
+let g:WhichKeyDesc_AI_ChatQuickly="<leader>ac Chat quickly"
+nnoremap <leader>ac :action OpenInlineChatAction<CR>
 
-let g:WhichKeyDesc_Find_FindText = "<leader>ft FindText"
-nmap <leader>ft <action>(FindInPath)
+" ===================Buffer======================
+" Setting Buffer keymap
+let g:WhichKeyDesc_Buffer="<leader>b Buffer"
+" close current buffer
+let g:WhichKeyDesc_Buffer_CloseEditor="<leader>bd Close current buffer"
+nnoremap <leader>bd :action CloseEditor<CR>
+" close all buffer
+let g:WhichKeyDesc_Buffer_CloseAllEditor="<leader>ba Close all buffer"
+nnoremap <leader>ba :action CloseAllEditors<CR>
+" close other buffer
+let g:WhichKeyDesc_Buffer_CloseOtherEditor="<leader>bo Close other buffer"
+nnoremap <leader>bo :action CloseAllEditorsButActive<CR>
+" close buffers to the left
+let g:WhichKeyDesc_Buffer_CloseLeftEditor="<leader>bl Close buffers to the left"
+nnoremap <leader>bl :action CloseAllToTheLeft<CR>
+" close buffers to the right
+let g:WhichKeyDesc_Buffer_CloseRightEditor="<leader>br Close buffers to the right"
+nnoremap <leader>br :action CloseAllToTheRight<CR>
+" switch buffer
+let g:WhichKeyDesc_Buffer_SwitchBuffer="<leader>bb Switch buffer"
+nnoremap <leader>bb :bn<CR>
+" toggle pin buffer
+let g:WhichKeyDesc_Buffer_TogglePinBuffer="<leader>bp Toggle pin buffer"
+nnoremap <leader>bp :action PinActiveEditorTab<CR>
+" delete non pinned buffer
+let g:WhichKeyDesc_Buffer_DeleteNonPinnedBuffer="<leader>bP Delete non pinned buffer"
+nnoremap <leader>bP :action CloseAllUnpinnedEditors<CR>
 
-let g:WhichKeyDesc_Find_Commands = "<leader>fc Commands"
-nmap <leader>fc <action>(GotoAction)
+" ===================Code========================
+" Setting Code keymap
+let g:WhichKeyDesc_Code="<leader>c Code"
+" format code
+let g:WhichKeyDesc_Code_FormatCode="<leader>cf Format code"
+nnoremap <leader>cf :action ReformatCode<CR>
+" Line Diagnostic
+let g:WhichKeyDesc_Code_LineDiagnostic="<leader>cd Line Diagnostic"
+nnoremap <leader>cd :action ShowErrorDescription<CR>
+" Code Action
+let g:WhichKeyDesc_Code_CodeAction="<leader>ca Code Action"
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+" Source Action
+let g:WhichKeyDesc_Code_SourceAction="<leader>cA Source Action"
+nnoremap <leader>cA :action Refactorings.QuickListPopupAction<CR>
+" Rename file
+let g:WhichKeyDesc_Code_RenameFile="<leader>cR Rename file"
+nnoremap <leader>cR :action RenameFile<CR>
+" Rename
+let g:WhichKeyDesc_Code_Rename="<leader>cr Rename"
+nnoremap <leader>cr :action RenameElement<CR>
+" Generate Annotations
+let g:WhichKeyDesc_Code_Generate="<leader>cn Generate"
+nnoremap <leader>cn :action Generate<CR>
 
-let g:WhichKeyDesc_Find_OpenedProject = "<leader>fp OpenedProject"
-nmap <leader>fp <action>(OpenProjectWindows)
+" ===================Debug=======================
+" Setting Debug keymap
+let g:WhichKeyDesc_Debug="<leader>d Debug"
+" Run with Args
+let g:WhichKeyDesc_Debug_RunWithArgs="<leader>da Run with Args"
+nnoremap <leader>da :action editRunConfigurations<CR>
+" Toggle Breakpoint
+let g:WhichKeyDesc_Debug_ToggleBreakpoint="<leader>db Toggle Breakpoint"
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+" Breakpoint Condition
+let g:WhichKeyDesc_Debug_BreakpointCondition="<leader>dB Breakpoint Condition"
+nnoremap <leader>dB :action AddConditionalBreakpoint<CR>
+" Run/Continue
+let g:WhichKeyDesc_Debug_Run="<leader>dc Run/Continue"
+nnoremap <leader>dc :action Resume<CR>
+" Alt-Up Run/Continue
+nnoremap <A-Up> :action Resume<CR>
+" Run to Cursor
+let g:WhichKeyDesc_Debug_RunToCursor="<leader>dC Run to Cursor"
+nnoremap <leader>dC :action RunToCursor<CR>
+" Go to Line(No Execute)
+let g:WhichKeyDesc_Debug_GoToLine="<leader>dg Go to Line(No Execute)"
+nnoremap <leader>dg :action CIDR.Debugger.JumpToLine<CR>
+" Step Into
+let g:WhichKeyDesc_Debug_StepInto="<leader>di Step Into"
+nnoremap <leader>di :action StepInto<CR>
+" Alt-Down Step Into
+nnoremap <A-Down> :action StepInto<CR>
+" Down
+let g:WhichKeyDesc_Debug_Down="<leader>dj Down"
+nnoremap <leader>dj :action StepOver<CR>
+" Alt-Right Step Over
+nnoremap <A-Right> :action StepOver<CR>
+" Up
+let g:WhichKeyDesc_Debug_Up="<leader>dk Up"
+nnoremap <leader>dk :action StepOut<CR>
+" Alt-Left Step Out
+nnoremap <A-Left> :action StepOut<CR>
+" Run Last
+let g:WhichKeyDesc_Debug_RunLast="<leader>dl Run Last"
+nnoremap <leader>dl :action Rerun<CR>
+" Stop
+let g:WhichKeyDesc_Debug_Stop="<leader>dp Stop"
+nnoremap <leader>dp :action Stop<CR>
+" Terminate
+let g:WhichKeyDesc_Debug_Terminate="<leader>dt Terminate"
+nnoremap <leader>dt :action Terminate<CR>
 
-" g: Git ⭐️
-let g:WhichKeyDesc_Git = "<leader>g Git"
-let g:WhichKeyDesc_Git_RollbackHunk = "<leader>gr RollbackHunk"
-nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+" ===================File========================
+" Open Explorer
+let g:WhichKeyDesc_File="<leader>e Explorer"
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
 
-" i: Insert ⭐️
-let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
-nmap <leader>i f(a
+" ===================Find=========================
+" Setting Find keymap
+let g:WhichKeyDesc_Find="<leader>f Find"
+" New File
+let g:WhichKeyDesc_Find_NewFile="<leader>fn New File"
+nnoremap <leader>fn :action NewFile<CR>
+" Terminal
+let g:WhichKeyDesc_Find_Terminal="<leader>ft Terminal"
+nnoremap <leader>ft :action ActivateTerminalToolWindow<CR>
+" Find
+let g:WhichKeyDesc_Find_Buffers="<leader>ff"
+nnoremap <leader>ff :action SearchEverywhere<CR>
 
-" w: save ⭐️
-let g:WhichKeyDesc_Save = "<leader>w Save"
-nmap <leader>w <action>(SaveAll)
+" ===================Git==========================
+" Setting Git keymap
+let g:WhichKeyDesc_Git="<leader>g Git"
+" Git Browse git repository
+let g:WhichKeyDesc_Git_Browse="<leader>gB Browse git repository"
+nnoremap <leader>gB :action ActivateVersionControlToolWindow<CR>
+" Commits
+let g:WhichKeyDesc_Git_Commits="<leader>gc Commits"
+nnoremap <leader>gc :action ActivateCommitToolWindow<CR>
+" Git Actions
+let g:WhichKeyDesc_Git_Actions="<leader>ga Git Actions"
+nnoremap <leader>ga :action VcsGroups<CR>
 
-" j: add Semicolon and goto nextline⭐️
-let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
-nmap <leader>j A;<ESC>o
+" ===================Harpoon=========================
+" Harpoon Menu
+let g:WhichKeyDesc_Harpoon="<leader>h Harpoon"
+nnoremap <leader>h :action com.github.erotourtes.harpoon.pluginsGroup<CR>
+" Harpoon 1
+let g:WhichKeyDesc_Harpoon_1="<leader>1 Harpoon 1"
+nnoremap <leader>1 :action HarpoonerOpenFile0<CR>
+" Harpoon 2
+let g:WhichKeyDesc_Harpoon_2="<leader>2 Harpoon 2"
+nnoremap <leader>2 :action HarpoonerOpenFile1<CR>
+" Harpoon 3
+let g:WhichKeyDesc_Harpoon_3="<leader>3 Harpoon 3"
+nnoremap <leader>3 :action HarpoonerOpenFile2<CR>
+" Harpoon 4
+let g:WhichKeyDesc_Harpoon_4="<leader>4 Harpoon 4"
+nnoremap <leader>4 :action HarpoonerOpenFile3<CR>
+" Harpoon 5
+let g:WhichKeyDesc_Harpoon_5="<leader>5 Harpoon 5"
+nnoremap <leader>5 :action HarpoonerOpenFile4<CR>
+" Add File
+let g:WhichKeyDesc_Harpoon_AddFile="<leader>H Add File"
+nnoremap <leader>H :action HarpoonerAddFile<CR>
 
-" l: lsp: Language server protocol (align with neovim)⭐️
-let g:WhichKeyDesc_LSP = "<leader>l LSP"
-let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
-nmap <leader>lr <action>(RenameElement)
+" ===================QUIT=========================
+" Setting Quit keymap
+let g:WhichKeyDesc_Quit="<leader>q Quit"
+" Quit All
+let g:WhichKeyDesc_Quit_All="<leader>qa Quit All"
+nnoremap <leader>qa :action Exit<CR>
 
-let g:WhichKeyDesc_LSP_Format = "<leader>lf Format"
-nmap <leader>lf <action>(ReformatCode) \| <action>(OptimizeImports)
+" ===================Refactor==========================
+" Setting Refactor keymap
+let g:WhichKeyDesc_Refactor="<leader>r Refactor"
+" Extract Block
+let g:WhichKeyDesc_Refactor_ExtractBlock="<leader>rb Extract Block"
+nnoremap <leader>rb :action ExtractBlock<CR>
+" Extract Block To File
+let g:WhichKeyDesc_Refactor_ExtractBlockToFile="<leader>rf Extract Block To File"
+nnoremap <leader>rf :action ExtractBlockToFile<CR>
+" Extract Method
+let g:WhichKeyDesc_Refactor_ExtractMethod="<leader>rm Extract Method"
+nnoremap <leader>rm :action ExtractMethod<CR>
+" Extract Method To File
+let g:WhichKeyDesc_Refactor_ExtractMethodToFile="<leader>rF Extract Method To File"
+nnoremap <leader>rF :action ExtractMethodToFile<CR>
+" Inline Variable
+let g:WhichKeyDesc_Refactor_InlineVariable="<leader>ri Inline Variable"
+nnoremap <leader>ri :action InlineVariable<CR>
+" Extract Variable
+let g:WhichKeyDesc_Refactor_ExtractVariable="<leader>rx Extract Variable"
+nnoremap <leader>rx :action ExtractVariable<CR>
+" Extract Trait
+let g:WhichKeyDesc_Refactor_ExtractTrait="<leader>rt Extract Trait"
+nnoremap <leader>rt :action Rust.RsExtractTrait<CR>
+" Refactor
+let g:WhichKeyDesc_Refactor_Refactor="<leader>rs Refactor"
+nnoremap <leader>rs :action Refactorings.QuickListPopupAction<CR>
 
-let g:WhichKeyDesc_LSP_Actions = "<leader>la Actions"
-nmap <leader>la <action>(ShowIntentionActions)
+" ===================Search==========================
+" Setting Search keymap
+let g:WhichKeyDesc_Search="<leader>s Search"
 
-let g:WhichKeyDesc_LSP_Reflector = "<leader>lc Reflector"
-nmap <leader>lc <action>(RefactoringMenu)
-
-" d: Debug ⭐️
-let g:WhichKeyDesc_Debug = "<leader>d Debug"
-let g:WhichKeyDesc_Debug_Start = "<leader>dd Start"
-nmap <leader>ds <action>(Debug)
-let g:WhichKeyDesc_Debug_StepOver = "<leader>ds StepOver"
-nmap <leader>ds <action>(StepOver)
-let g:WhichKeyDesc_Debug_StepIn = "<leader>di StepIn"
-nmap <leader>di <action>(StepIn)
-let g:WhichKeyDesc_Debug_StepOut = "<leader>do StepOut"
-nmap <leader>do <action>(StepOut)
-let g:WhichKeyDesc_Debug_Continue = "<leader>dc Continue"
-nmap <leader>dc <action>(Continue)
-let g:WhichKeyDesc_Debug_Stop = "<leader>dd Stop"
-nmap <leader>dd <action>(Stop)
-let g:WhichKeyDesc_Debug_Reload = "<leader>dr Reload"
-nmap <leader>dr <action>(Reload)
-let g:WhichKeyDesc_Debug_ToggleBreakpoint = "<leader>db ToggleBreakpoint"
-nmap <leader>db <action>(ToggleLineBreakpoint)
-
-" n: No ⭐️
-let g:WhichKeyDesc_No_Highlight = "<leader>nl NoHighlight"
-nmap <leader>nl :nohlsearch<CR>
-
-
-" s: Show ⭐️
-let g:WhichKeyDesc_Show = "<leader>s Show"
-let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
-nmap <leader>ss <action>(FileStructurePopup)
-let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
-nmap <leader>sb <action>(ShowBookmarks)
-let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sb ShowParameterInfo"
-nmap <leader>sp <action>(ParameterInfo)
-
-" r: Run/Re ⭐️
-let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
-let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
-nmap <leader>rr <action>(Rerun)
-let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt ReRunTests"
-nmap <leader>rt <action>(RerunTests)
-let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
-map <leader>rn <action>(RenameElement)
-
-" z: zip(fold) ⭐️
-let g:WhichKeyDesc_Zip = "<leader>z Zip"
-let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo unZipAll"
-nmap <leader>zo <action>(ExpandAllRegions)
-let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc ZipAll"
-nmap <leader>zc <action>(CollapseAllRegions)
-
-" c: Close ⭐️;
-let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
-nmap <leader>c :q!<CR>
-
-" e: Toggle Explorer ⭐️
-let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
-nmap <leader>e <action>(ActivateProjectToolWindow)
-" e: Extract
-" extract method/function
-vmap <leader>em <action>(ExtractMethod)
-" extract constant
-vmap <leader>ec <action>(IntroduceConstant)
-" extract field
-vmap <leader>ef <action>(IntroduceField)
-" extract variable
-vmap <leader>ev <action>(IntroduceVariable)
+" ===================Test============================
+" Setting Test keymap
+let g:WhichKeyDesc_Test="<leader>t Test"
+" Run Last Test
+let g:WhichKeyDesc_Test_RunLastTest="<leader>tl Run Last Test"
+nnoremap <leader>tl :action RerunTests<CR>
