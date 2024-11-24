@@ -45,8 +45,17 @@ nnoremap <C-l> <C-w>l
 " <C-s> to save
 nnoremap <C-s> :w<CR>
 " gcc to comment out a line
-nmap gcc :CommentByLineComment<CR>
-vmap gc :CommentByLineComment<CR>
+nnoremap gcc :action CommentByLineComment<CR>
+vmap gc :action CommentByLineComment<CR>
+" gd goto definition
+nnoremap gd :action GotoDeclaration<CR>
+" gi goto implementation
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gI :action GotoImplementation<CR>
+" gr goto reference
+nnoremap gr :action GotoDeclaration<CR>
+" gD goto Declaration
+nnoremap gD :action GotoDeclaration<CR>
 
 " =======================================================
 " ========== Which Key ==========
@@ -56,7 +65,7 @@ let g:WhichKeyDesc_LeaderKeymap="<leader>LeaderKeymap"
 
 " ===================AI==========================
 " Setting AI keymap
-let g:WhichKeyDesc_AI="<leader>a AI"
+let g:WhichKeyDesc_AI="<leader>a 🤖AI"
 " toggle CopilotChat
 let g:WhichKeyDesc_AI_ToggleCopilotChat="<leader>aa Toggle CopilotChat"
 nnoremap <leader>aa :action copilot.chat.show<CR>
@@ -66,7 +75,7 @@ nnoremap <leader>ac :action OpenInlineChatAction<CR>
 
 " ===================Buffer======================
 " Setting Buffer keymap
-let g:WhichKeyDesc_Buffer="<leader>b Buffer"
+let g:WhichKeyDesc_Buffer="<leader>b 📄Buffer"
 " close current buffer
 let g:WhichKeyDesc_Buffer_CloseEditor="<leader>bd Close current buffer"
 nnoremap <leader>bd :action CloseEditor<CR>
@@ -119,7 +128,7 @@ nnoremap <leader>cn :action Generate<CR>
 
 " ===================Debug=======================
 " Setting Debug keymap
-let g:WhichKeyDesc_Debug="<leader>d Debug"
+let g:WhichKeyDesc_Debug="<leader>d ▶Debug"
 " Run with Args
 let g:WhichKeyDesc_Debug_RunWithArgs="<leader>da Run with Args"
 nnoremap <leader>da :action editRunConfigurations<CR>
@@ -167,12 +176,12 @@ nnoremap <leader>dt :action Terminate<CR>
 
 " ===================File========================
 " Open Explorer
-let g:WhichKeyDesc_File="<leader>e Explorer"
+let g:WhichKeyDesc_File="<leader>e 🗂Explorer"
 nnoremap <leader>e :action ActivateProjectToolWindow<CR>
 
 " ===================Find=========================
 " Setting Find keymap
-let g:WhichKeyDesc_Find="<leader>f Find"
+let g:WhichKeyDesc_Find="<leader>f 🔍Find"
 " New File
 let g:WhichKeyDesc_Find_NewFile="<leader>fn New File"
 nnoremap <leader>fn :action NewFile<CR>
@@ -198,7 +207,7 @@ nnoremap <leader>ga :action VcsGroups<CR>
 
 " ===================Harpoon=========================
 " Harpoon Menu
-let g:WhichKeyDesc_Harpoon="<leader>h Harpoon"
+let g:WhichKeyDesc_Harpoon="<leader>h 🏷Harpoon"
 nnoremap <leader>h :action com.github.erotourtes.harpoon.pluginsGroup<CR>
 " Harpoon 1
 let g:WhichKeyDesc_Harpoon_1="<leader>1 Harpoon 1"
@@ -223,8 +232,8 @@ nnoremap <leader>H :action HarpoonerAddFile<CR>
 " Setting Quit keymap
 let g:WhichKeyDesc_Quit="<leader>q Quit"
 " Quit All
-let g:WhichKeyDesc_Quit_All="<leader>qa Quit All"
-nnoremap <leader>qa :action Exit<CR>
+let g:WhichKeyDesc_Quit_All="<leader>qq Quit All"
+nnoremap <leader>qq :action CloseProject<CR>
 
 " ===================Refactor==========================
 " Setting Refactor keymap
@@ -264,3 +273,8 @@ let g:WhichKeyDesc_Test="<leader>t Test"
 " Run Last Test
 let g:WhichKeyDesc_Test_RunLastTest="<leader>tl Run Last Test"
 nnoremap <leader>tl :action RerunTests<CR>
+
+" ===================Fuzzier============================
+map <Leader>ff <action>(com.mituuz.fuzzier.Fuzzier)
+map <Leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
+map <Leader>gf <action>(com.mituuz.fuzzier.FuzzierVCS)
